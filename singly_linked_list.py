@@ -40,17 +40,28 @@ class SinglyLinkedList:
         if not self._length:
             self.tail = None
         return former_head.value
+    
+    def pop_right(self):
+        if not self._length:
+            raise Exception("list is empty")
+        former_tail_value = self.tail.value
+        current_node = self.head
+        if self._length > 1:
+            while current_node.next is not self.tail:
+                current_node = current_node.next
+            current_node.next = None
+            self.tail = current_node
+        else:
+            self.head = self.tail = None
+        self._length -= 1
+        return former_tail_value
 
 # %% Scrips
 x = SinglyLinkedList()
 x.prepend(2)
 x.prepend(1)
-x.pop_left()
-x.pop_left()
-x.pop_left()
-
-# %% Tests
-x.tail
-x.head
-x._length
-x.head.next.value
+x.pop_right()
+x.pop_right()
+x.pop_right()
+# x.head
+# x.tail
