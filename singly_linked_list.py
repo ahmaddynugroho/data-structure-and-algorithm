@@ -19,13 +19,25 @@ class SinglyLinkedList:
             self.tail = new_node
         self._length += 1
         return self
+    
+    def prepend(self, value):
+        new_node = Node(value)
+        if not self._length:
+            self.head = self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+        self._length += 1
+        return self
 
 # %% Scrips
 x = SinglyLinkedList()
-x.append(4)
-x.append(2)
-x.append(3)
-x.append(1)
+x.prepend(3)
+x.prepend(2)
+x.prepend(1)
 
 # %% Tests
-x.head.next.next.next.value
+x.tail
+x.head
+x._length
+x.head.next.value
