@@ -36,13 +36,14 @@ class DoublyLinkedList:
     def pop_left(self):
         if not self._length:
             raise Exception("list is empty")
-        former_head = self.head
-        self.head = former_head.next
-        former_head.next = None
-        self._length -= 1
-        if not self._length:
-            self.tail = None
-        return former_head.value
+        head_old = self.head
+        if self._length == 1:
+            self.head = self.tail = None
+        else:
+            self.head = head_old.next
+            self.head.prev = None
+        return head_old.value
+
     
     def pop_right(self):
         if not self._length:
@@ -97,6 +98,7 @@ x.prepend(4)
 x.prepend(3)
 x.prepend(2)
 x.prepend(1)
+x.pop_left()
 
 i = x.head
 while i is not None:
