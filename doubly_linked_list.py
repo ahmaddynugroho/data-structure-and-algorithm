@@ -73,7 +73,9 @@ class DoublyLinkedList:
         if node.next is None:
             return self.pop_right()
         node_prev.next = node.next
+        node.next.prev = node_prev
         node.next = None
+        node.prev = None
         self._length -= 1
         return node.value
     
@@ -96,7 +98,7 @@ x.prepend(4)
 x.prepend(3)
 x.prepend(2)
 x.prepend(1)
-x.pop_right()
+x.remove(2)
 
 i = x.head
 while i is not None:
