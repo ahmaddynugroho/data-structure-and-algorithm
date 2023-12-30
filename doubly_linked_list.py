@@ -42,23 +42,21 @@ class DoublyLinkedList:
         else:
             self.head = head_old.next
             self.head.prev = None
+        self._length -= 1
         return head_old.value
-
     
     def pop_right(self):
         if not self._length:
             raise Exception("list is empty")
-        former_tail_value = self.tail.value
-        current_node = self.head
-        if self._length > 1:
-            while current_node.next is not self.tail:
-                current_node = current_node.next
-            current_node.next = None
-            self.tail = current_node
-        else:
+        tail_old = self.tail
+        if self._length == 1:
             self.head = self.tail = None
+        else:
+            self.tail = tail_old.prev
+            self.tail.next = None
+            tail_old.prev = None
         self._length -= 1
-        return former_tail_value
+        return 
     
     def remove(self, value):
         if not self._length:
@@ -98,7 +96,7 @@ x.prepend(4)
 x.prepend(3)
 x.prepend(2)
 x.prepend(1)
-x.pop_left()
+x.pop_right()
 
 i = x.head
 while i is not None:
@@ -109,4 +107,3 @@ i = x.tail
 while i is not None:
     print(i.value)
     i = i.prev
-# %%
