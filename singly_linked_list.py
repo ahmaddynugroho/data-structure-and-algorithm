@@ -55,13 +55,36 @@ class SinglyLinkedList:
             self.head = self.tail = None
         self._length -= 1
         return former_tail_value
+    
+    def remove(self, value):
+        if not self._length:
+            raise Exception("list is empty")
+        if self.head.value is value:
+            return self.pop_left()
+        node_prev = self.head
+        node = self.head.next
+        while node.value is not value and node is not None:
+            node_prev = node
+            node = node.next
+        if node is None:
+            raise Exception("value not found")
+        if node.next is None:
+            return self.pop_right()
+        node_prev.next = node.next
+        node.next = None
+        self._length -= 1
+        return node.value
 
+        
 # %% Scrips
 x = SinglyLinkedList()
+x.prepend(4)
+x.prepend(3)
 x.prepend(2)
 x.prepend(1)
-x.pop_right()
-x.pop_right()
-x.pop_right()
+x.remove(4)
+x.remove(1)
+x.remove(3)
+x.head.value
 # x.head
-# x.tail
+x.tail.value
