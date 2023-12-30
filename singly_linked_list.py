@@ -74,6 +74,18 @@ class SinglyLinkedList:
         node.next = None
         self._length -= 1
         return node.value
+    
+    def reverse(self):
+        # none, a, b, c, d
+        l = None
+        m = self.head
+        while m is not None:
+            r = m.next
+            m.next = l
+            l = m
+            m = r
+        self.head, self.tail = self.tail, self.head
+        return self
 
         
 # %% Scrips
@@ -82,9 +94,14 @@ x.prepend(4)
 x.prepend(3)
 x.prepend(2)
 x.prepend(1)
-x.remove(4)
-x.remove(1)
-x.remove(3)
-x.head.value
+x.reverse()
+# x.remove(4)
+# x.remove(1)
+# x.remove(3)
+# x.head.value
 # x.head
-x.tail.value
+# x.tail.value
+i = x.head
+while i is not None:
+    print(i.value)
+    i = i.next
