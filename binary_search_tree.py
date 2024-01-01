@@ -76,16 +76,29 @@ class BinaryTree:
             parent.right = current.right if current.right else current.left
         return self
 
+    def _remove_node_two_child(self, current):
+        successor = self._get_successor(current)
+        current.value = successor.value
+        return self.remove(current.value, start=current.right, parent=current)
+
+    @staticmethod
+    def _get_successor(current):
+        successor = current.right
+        while successor and successor.left:
+            successor = successor.left
+        return successor
+
 
 # %%
 btree = BinaryTree()
 btree.insert(2)
-btree.insert(3)
-btree.insert(1)
 btree.insert(4)
+btree.insert(1)
+btree.insert(3)
+btree.insert(5)
 
+btree.remove(4)
 # btree.root.value
 # btree.root.left.value
-# btree.root.right.value
-btree.remove(3)
+# btree.root.right.right
 btree.root.right.value
