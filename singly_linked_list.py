@@ -4,6 +4,7 @@ class Node:
         self.value = value
         self.next = None
 
+
 class SinglyLinkedList:
     def __init__(self):
         self.head = None
@@ -19,7 +20,7 @@ class SinglyLinkedList:
             self.tail = new_node
         self._length += 1
         return self
-    
+
     def prepend(self, value):
         new_node = Node(value)
         if not self._length:
@@ -29,7 +30,7 @@ class SinglyLinkedList:
             self.head = new_node
         self._length += 1
         return self
-    
+
     def pop_left(self):
         if not self._length:
             raise Exception("list is empty")
@@ -40,7 +41,7 @@ class SinglyLinkedList:
         if not self._length:
             self.tail = None
         return former_head.value
-    
+
     def pop_right(self):
         if not self._length:
             raise Exception("list is empty")
@@ -55,7 +56,7 @@ class SinglyLinkedList:
             self.head = self.tail = None
         self._length -= 1
         return former_tail_value
-    
+
     def remove(self, value):
         if not self._length:
             raise Exception("list is empty")
@@ -74,7 +75,7 @@ class SinglyLinkedList:
         node.next = None
         self._length -= 1
         return node.value
-    
+
     def reverse(self):
         # none, a, b, c, d
         l = None
@@ -87,7 +88,7 @@ class SinglyLinkedList:
         self.head, self.tail = self.tail, self.head
         return self
 
-        
+
 # %% Scrips
 x = SinglyLinkedList()
 x.prepend(4)

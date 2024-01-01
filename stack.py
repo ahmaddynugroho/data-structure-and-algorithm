@@ -4,21 +4,22 @@ class Node:
         self.value = value
         self.next = None
 
+
 class Stack:
     def __init__(self) -> None:
         self._top = None
         self._size = 0
         self._max_size = 10
-    
+
     def push(self, value):
         if self._max_size == self._size:
             raise Exception("max size")
         node = Node(value)
         node.next = self._top
         self._top = node
-        self._size += 1
+        self._size += sing1
         return self
-    
+
     def pop(self):
         if not self._size:
             raise Exception("empty stack")
@@ -30,18 +31,19 @@ class Stack:
 
     def peek(self):
         return self._top
-    
+
     def clear(self):
         self._top = None
         self._size = 0
         return self
 
+
 # %%
 bjir = Stack()
-bjir.push('google')
-bjir.push('twitter')
+bjir.push("google")
+bjir.push("twitter")
 bjir.pop()
-bjir.push('pixiv')
+bjir.push("pixiv")
 print(bjir.peek().value)
 # bjir.clear()
 # bjir.pop()

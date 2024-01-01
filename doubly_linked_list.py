@@ -5,6 +5,7 @@ class Node:
         self.next = None
         self.prev = None
 
+
 class DoublyLinkedList:
     def __init__(self):
         self.head = None
@@ -21,7 +22,7 @@ class DoublyLinkedList:
             self.tail = new_node
         self._length += 1
         return self
-    
+
     def prepend(self, value):
         new_node = Node(value)
         if not self._length:
@@ -32,7 +33,7 @@ class DoublyLinkedList:
             self.head = new_node
         self._length += 1
         return self
-    
+
     def pop_left(self):
         if not self._length:
             raise Exception("list is empty")
@@ -44,7 +45,7 @@ class DoublyLinkedList:
             self.head.prev = None
         self._length -= 1
         return head_old.value
-    
+
     def pop_right(self):
         if not self._length:
             raise Exception("list is empty")
@@ -56,8 +57,8 @@ class DoublyLinkedList:
             self.tail.next = None
             tail_old.prev = None
         self._length -= 1
-        return 
-    
+        return
+
     def remove(self, value):
         if not self._length:
             raise Exception("list is empty")
@@ -78,7 +79,7 @@ class DoublyLinkedList:
         node.prev = None
         self._length -= 1
         return node.value
-    
+
     def reverse(self):
         # none, a, b, c, d
         l = None
@@ -91,7 +92,7 @@ class DoublyLinkedList:
         self.head, self.tail = self.tail, self.head
         return self
 
-        
+
 # %% Scrips
 x = DoublyLinkedList()
 x.prepend(4)
