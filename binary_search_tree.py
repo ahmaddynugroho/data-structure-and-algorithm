@@ -15,23 +15,20 @@ class BinaryTree:
         if not self.root:
             self.root = node
             return self
-        if node.value == self.root.value:
-            return self
         node_now = self.root
-        while node_now.left != None or node_now.right != None:
-            if node.value < node_now.value:
+        while value != node_now.value:
+            if value < node_now.value:
                 if not node_now.left:
+                    node_now.left = node
                     break
                 node_now = node_now.left
-            else :
+            else:
                 if not node_now.right:
+                    node_now.right = node
                     break
                 node_now = node_now.right
-        if node.value < node_now.value:
-            node_now.left = node
-        else:
-            node_now.right = node
         return self
+
 
 # %%
 btree = BinaryTree()
