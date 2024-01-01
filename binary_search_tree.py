@@ -29,11 +29,36 @@ class BinaryTree:
                 node_now = node_now.right
         return self
 
+    def contains(self, value):
+        if not self.root:
+            return False
+        if value == self.root.value:
+            return True
+        node_now = self.root
+        while value != node_now.value:
+            if value < node_now.value:
+                if not node_now.left:
+                    break
+                elif value == node_now.left.value:
+                    return True
+                node_now = node_now.left
+            else:
+                if not node_now.right:
+                    break
+                elif value == node_now.right.value:
+                    return True
+                node_now = node_now.right
+        return False
+
 
 # %%
 btree = BinaryTree()
 btree.insert(2)
 btree.insert(3)
 btree.insert(1)
+btree.insert(4)
 
-btree.root.left.value
+# btree.root.value
+# btree.root.left.value
+# btree.root.right.value
+btree.contains(4)
