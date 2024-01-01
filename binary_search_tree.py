@@ -1,4 +1,4 @@
-#%% definitions
+# %% definitions
 class Node:
     def __init__(self, value) -> None:
         self.value = value
@@ -9,7 +9,7 @@ class Node:
 class BinaryTree:
     def __init__(self) -> None:
         self.root: Node = None
-    
+
     def insert(self, value):
         node = Node(value)
         if not self.root:
@@ -55,7 +55,7 @@ class BinaryTree:
         if current.left and current.right:
             return self._remove_node_two_child(current)
         return self._remove_node_one_child(current, parent)
-    
+
     def _remove_node_no_child(self, current, parent):
         if current == self.root:
             self.root = None
@@ -64,6 +64,16 @@ class BinaryTree:
             parent.left = None
         if current == parent.right:
             parent.right = None
+        return self
+
+    def _remove_node_one_child(self, current, parent):
+        if current == self.root:
+            self.root = current.right if current.right else current.left
+            return self
+        if current == parent.left:
+            parent.left = current.right if current.right else current.left
+        else:
+            parent.right = current.right if current.right else current.left
         return self
 
 
@@ -77,4 +87,5 @@ btree.insert(4)
 # btree.root.value
 # btree.root.left.value
 # btree.root.right.value
-btree.contains(4)
+btree.remove(3)
+btree.root.right.value
