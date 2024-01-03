@@ -17,7 +17,7 @@ class Stack:
         node = Node(value)
         node.next = self._top
         self._top = node
-        self._size += sing1
+        self._size += 1
         return self
 
     def pop(self):
