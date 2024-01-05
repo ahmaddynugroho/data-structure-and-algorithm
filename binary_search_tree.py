@@ -121,6 +121,19 @@ class BinarySearchTree:
                 stack.append(visited_node.right)
         return visited
 
+    def dft_pre_order_recursive(self):
+        if not self.root:
+            raise Exception("tree is empty")
+
+        def _traverse(node):
+            return (
+                [node.value] + _traverse(node.right) + _traverse(node.left)
+                if node
+                else []
+            )
+
+        return _traverse(self.root)
+
 
 # %%
 btree = BinarySearchTree()
@@ -135,4 +148,4 @@ btree.insert(5)
 # btree.root.left.value
 # btree.root.right.right
 # btree.root.right.value
-btree.dft_pre_order_iterative()
+btree.dft_pre_order_recursive()
