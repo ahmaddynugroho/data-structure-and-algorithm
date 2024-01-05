@@ -1,7 +1,7 @@
-# %% imports
+# %% definitions
 from collections import deque
 
-# %% definitions
+
 class Node:
     def __init__(self, value) -> None:
         self.value = value
@@ -90,7 +90,7 @@ class BinarySearchTree:
         while successor and successor.left:
             successor = successor.left
         return successor
-    
+
     def breath_first_traversal(self):
         if not self.root:
             raise Exception("tree is empty")
