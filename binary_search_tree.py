@@ -1,3 +1,6 @@
+# %% imports
+from collections import deque
+
 # %% definitions
 class Node:
     def __init__(self, value) -> None:
@@ -87,6 +90,36 @@ class BinarySearchTree:
         while successor and successor.left:
             successor = successor.left
         return successor
+    
+    def breath_first_traversal(self):
+        if not self.root:
+            raise Exception("tree is empty")
+        queue = deque()
+        queue.append(self.root)
+        visited = []
+        while queue:
+            visited_node = queue.popleft()
+            visited.append(visited_node.value)
+            if visited_node.left:
+                queue.append(visited_node.left)
+            if visited_node.right:
+                queue.append(visited_node.right)
+        return visited
+
+    def dft_pre_order_iterative(self):
+        if not self.root:
+            raise Exception("tree is empty")
+        stack = deque()
+        stack.append(self.root)
+        visited = []
+        while stack:
+            visited_node = stack.pop()
+            visited.append(visited_node.value)
+            if visited_node.left:
+                stack.append(visited_node.left)
+            if visited_node.right:
+                stack.append(visited_node.right)
+        return visited
 
 
 # %%
@@ -97,8 +130,9 @@ btree.insert(1)
 btree.insert(3)
 btree.insert(5)
 
-btree.remove(4)
+# btree.remove(4)
 # btree.root.value
 # btree.root.left.value
 # btree.root.right.right
-btree.root.right.value
+# btree.root.right.value
+btree.dft_pre_order_iterative()
