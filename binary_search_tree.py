@@ -6,7 +6,7 @@ class Node:
         self.right: Node = None
 
 
-class BinaryTree:
+class BinarySearchTree:
     def __init__(self) -> None:
         self.root: Node = None
 
@@ -90,7 +90,7 @@ class BinaryTree:
 
 
 # %%
-btree = BinaryTree()
+btree = BinarySearchTree()
 btree.insert(2)
 btree.insert(4)
 btree.insert(1)
