@@ -151,6 +151,22 @@ class BinarySearchTree:
                     continue
                 node_now = node_visited.right
         return visited
+    
+    def dft_in_order_iterative_2(self):
+        if not self.root:
+            raise Exception("tree is empty")
+        stack = [(self.root, False)]
+        res = []
+        while stack:
+            cur, v = stack.pop()
+            if cur:
+                if v:
+                    res.append(cur.value)
+                else:
+                    stack.append((cur.right, False))
+                    stack.append((cur, True))
+                    stack.append((cur.left, False))
+        return res
 
     def dft_in_order_recursive(self):
         if not self.root:
@@ -202,4 +218,4 @@ for node in nodes:
     btree.insert(node)
 
 # btree.dft_post_order_iterative()
-btree.dft_post_order_recursive()
+btree.dft_in_order_iterative_2()
