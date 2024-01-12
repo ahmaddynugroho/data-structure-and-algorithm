@@ -19,7 +19,7 @@ class MaxBinaryHeap:
 
     def swap(self, idx_1, idx_2):
         self.items[idx_1], self.items[idx_2] = self.items[idx_2], self.items[idx_1]
-    
+
     def remove_max(self):
         if not self.items:
             raise Exception("Heap is empty")
@@ -29,13 +29,16 @@ class MaxBinaryHeap:
         self.items.pop()
         self.move_down()
         return max_el
-    
+
     def move_down(self):
         parent_idx = 0
         child_idx = parent_idx * 2 + 1
         end_idx = len(self.items) - 1
         while child_idx <= end_idx:
-            if child_idx < end_idx and self.items[child_idx] <= self.items[child_idx + 1]:
+            if (
+                child_idx < end_idx
+                and self.items[child_idx] <= self.items[child_idx + 1]
+            ):
                 child_idx += 1
             if self.items[parent_idx] < self.items[child_idx]:
                 self.swap(parent_idx, child_idx)
@@ -43,6 +46,27 @@ class MaxBinaryHeap:
                 child_idx = parent_idx * 2 + 1
             else:
                 break
+
+
+def heapify(array):
+    parent_idx = len(array) // 2 - 1
+    end_idx = len(array) - 1
+    for idx in range(parent_idx, -1, -1):
+        move_down(array, idx, end_idx)
+    return array
+
+
+def move_down(array, start_idx, end_idx):
+    child_idx = start_idx * 2 + 1
+    while child_idx <= end_idx:
+        if child_idx < end_idx and array[child_idx] <= array[child_idx + 1]:
+            child_idx += 1
+        if array[start_idx] < array[child_idx]:
+            array[start_idx], array[child_idx] = array[child_idx], array[start_idx]
+            start_idx = child_idx
+            child_idx = start_idx * 2 - 1
+        else:
+            break
 
 
 # %%
@@ -55,4 +79,6 @@ heap.insert(46)
 heap.insert(30)
 heap.remove_max()
 
-heap.items
+# heap.items
+n = [15, 19, 24, 10, 35, 27, 46, 40]
+heapify(n)
