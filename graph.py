@@ -1,4 +1,7 @@
 # %%
+from collections import deque
+
+
 class Graph:
     def __init__(self) -> None:
         self.adjacency_list = {}
@@ -35,8 +38,16 @@ class Graph:
         self.adjacency_list.pop(vertex)
         return self
 
-    def bft(self):  # Breath First Traversal
-        pass
+    def bft(self, start):  # Breath First Traversal
+        q = deque([start])  # queue
+        r = []  # result
+        while q:
+            cur = q.popleft()
+            r.append(cur)
+            for v in self.adjacency_list[cur]:
+                if v not in q and v not in r:
+                    q.append(v)
+        return r
 
 
 # %%
@@ -48,4 +59,5 @@ edges = "AB.AC.AD.BC.CD.CJ.DE.DI.EF.EG.FH.GH.GK.IJ.JK".split(".")
 for e in edges:
     g.add_edge(e[0], e[1])
 
-g.adjacency_list
+# g.adjacency_list
+g.bft("E")
