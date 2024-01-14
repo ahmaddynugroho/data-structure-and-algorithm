@@ -49,6 +49,17 @@ class Graph:
                     q.append(v)
         return r
 
+    def dft_i(self, start):  # depth first traversal
+        s = [start]
+        r = []
+        while s:
+            cur = s.pop()
+            r.append(cur)
+            for v in self.adjacency_list[cur]:
+                if v not in s and v not in r:
+                    s.append(v)
+        return r
+
 
 # %%
 g = Graph()
@@ -60,4 +71,4 @@ for e in edges:
     g.add_edge(e[0], e[1])
 
 # g.adjacency_list
-g.bft("E")
+g.dft_i("E")
