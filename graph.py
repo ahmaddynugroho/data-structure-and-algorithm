@@ -60,6 +60,20 @@ class Graph:
                     s.append(v)
         return r
 
+    def dft_r(self, start):  # dft recursive version
+        e = set()  # explored
+        r = []
+
+        def _traverse(cur: str, e: set):  # current, explored, graph
+            if cur not in e:
+                r.append(cur)
+                e.add(cur)
+                for v in self.adjacency_list[cur]:
+                    _traverse(v, e)
+
+        _traverse(start, e)
+        return r
+
 
 # %%
 g = Graph()
@@ -71,4 +85,5 @@ for e in edges:
     g.add_edge(e[0], e[1])
 
 # g.adjacency_list
-g.dft_i("E")
+# g.dft_i("E")
+g.dft_r("E")
