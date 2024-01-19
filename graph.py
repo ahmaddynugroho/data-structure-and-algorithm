@@ -80,7 +80,7 @@ g = Graph()
 vertices = list("ABCDEFGHIJK")
 for v in vertices:
     g.add_vertex(v)
-edges = "AB.AC.AD.BC.CD.CJ.DE.DI.EF.EG.FH.GH.GK.IJ.JK".split(".")
+edges = "AB.AC.AD.BC.CD.CJ.DE.DI.EF.EG.FH.GH.GK.HJ.HK.IJ.JK".split(".")
 for e in edges:
     g.add_edge(e[0], e[1])
 
