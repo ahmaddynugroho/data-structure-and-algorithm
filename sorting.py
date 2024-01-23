@@ -9,9 +9,9 @@ def insertion_sort(array):
 
 
 def selection_sort(array):
-    for i in range(len(array) - 1):
-        s = i + 1  # smallest
-        for j in range(i, len(array)):
+    for i in range(len(array)):
+        s = i  # smallest
+        for j in range(i + 1, len(array)):
             if array[j] < array[s]:
                 s = j
         array[i], array[s] = array[s], array[i]
