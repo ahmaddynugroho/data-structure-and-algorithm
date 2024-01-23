@@ -30,6 +30,17 @@ def bubble_sort(array):
     return array
 
 
+def shell_sort(array):
+    gaps = [5, 3, 1]
+    for gap in gaps:
+        for i in range(gap, len(array)):
+            j = i - gap
+            while array[j + gap] < array[j] and j >= 0:
+                array[j + gap], array[j] = array[j], array[j + gap]
+                j -= gap
+    return array
+
+
 # %%
 ar = [17, 59, 23, 70, 11, 42, 10, 31, 95, 20]
-bubble_sort(ar)
+shell_sort(ar)
