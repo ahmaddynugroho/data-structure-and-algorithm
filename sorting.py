@@ -18,7 +18,14 @@ def selection_sort(array):
     return array
 
 
+def bubble_sort(array):
+    for i in range(len(array) - 1):
+        for j in range(len(array) - 1, i, -1):
+            if array[j - 1] > array[j]:
+                array[j - 1], array[j] = array[j], array[j - 1]
+    return array
+
+
 # %%
 ar = [17, 59, 23, 70, 11, 42, 10, 31, 95, 20]
-# insertion_sort(ar)
-selection_sort(ar)
+bubble_sort(ar)
