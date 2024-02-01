@@ -70,6 +70,33 @@ def heap_sort(array):
     return array
 
 
+def merge_sort(ar):
+    if len(ar) < 2:
+        return ar
+    first_half = merge_sort(ar[: len(ar) // 2])
+    second_half = merge_sort(ar[len(ar) // 2 :])
+    return merge(first_half, second_half)
+
+
+def merge(first_half, second_half):
+    res = []
+    i = j = 0
+    while i < len(first_half) and j < len(second_half):
+        if first_half[i] < second_half[j]:
+            res.append(first_half[i])
+            i += 1
+        else:
+            res.append(second_half[j])
+            j += 1
+    while i < len(first_half):
+        res.append(first_half[i])
+        i += 1
+    while j < len(second_half):
+        res.append(second_half[j])
+        j += 1
+    return res
+
+
 # %%
 ar = [17, 59, 23, 70, 11, 42, 10, 31, 95, 20]
-heap_sort(ar)
+merge_sort(ar)
