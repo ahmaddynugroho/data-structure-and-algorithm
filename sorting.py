@@ -1,4 +1,7 @@
 # %%
+import math
+
+
 def insertion_sort(array):
     for i in range(1, len(array)):
         j = i
@@ -118,6 +121,29 @@ def partition(ar, start, end):
     return ar
 
 
+def get_max_number_of_digits(ar):
+    return max(int(math.log10(abs(num))) + 1 if num != 0 else 1 for num in ar)
+
+
+def get_digit_at_position(number, position):
+    return (abs(number) // 10**position) % 10
+
+
+def flatten(ar):
+    return [num for inner in ar for num in inner]
+
+
+def radix_sort(ar):
+    max_digits = get_max_number_of_digits(ar)
+    for i in range(max_digits + 1):
+        buckets = [[] for _ in range(10)]
+        for num in ar:
+            digit = get_digit_at_position(num, position=i)
+            buckets[digit].append(num)
+        ar = flatten(buckets)
+    return ar
+
+
 # %%
 ar = [17, 59, 23, 70, 11, 42, 10, 31, 95, 20]
-quick_sort(ar)
+radix_sort(ar)
