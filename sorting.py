@@ -97,6 +97,27 @@ def merge(first_half, second_half):
     return res
 
 
+def quick_sort(ar):
+    if len(ar) < 2:
+        return ar
+    return partition(ar, 0, len(ar) - 1)
+
+
+def partition(ar, start, end):
+    if start >= end:
+        return
+    pivot = end
+    boundary = start
+    for i in range(start, end):
+        if ar[i] <= ar[pivot]:
+            ar[boundary], ar[i] = ar[i], ar[boundary]
+            boundary += 1
+    ar[boundary], ar[end] = ar[end], ar[boundary]
+    partition(ar, start, boundary - 1)
+    partition(ar, boundary + 1, end)
+    return ar
+
+
 # %%
 ar = [17, 59, 23, 70, 11, 42, 10, 31, 95, 20]
-merge_sort(ar)
+quick_sort(ar)
